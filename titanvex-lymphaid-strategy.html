@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TitanVex Lymphaid — Amazon Growth Acceleration Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #F0D98B;
+    --gold-pale: #FBF5E6;
+    --navy: #0D1B2A;
+    --navy-mid: #1A2E44;
+    --navy-light: #243B55;
+    --slate: #3D5166;
+    --muted: #6B7F91;
+    --border: rgba(201,168,76,0.25);
+    --border-light: rgba(201,168,76,0.12);
+    --bg: #F9F7F2;
+    --white: #FFFFFF;
+    --text: #0D1B2A;
+    --text-body: #2C3E50;
+    --text-muted: #6B7F91;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-body);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* ── COVER PAGE ── */
+  .cover {
+    background: var(--navy);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 60px 72px;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 520px; height: 520px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.15);
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.1);
+  }
+  .cover-top { display: flex; justify-content: space-between; align-items: flex-start; }
+  .cover-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .cover-meta {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: right;
+    line-height: 2;
+  }
+  .cover-center { position: relative; z-index: 2; }
+  .cover-eyebrow {
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .cover-eyebrow::before {
+    content: '';
+    display: block;
+    width: 36px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .cover-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 62px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+  }
+  .cover-title span { color: var(--gold); }
+  .cover-subtitle {
+    font-size: 15px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+  .cover-pills { display: flex; gap: 10px; flex-wrap: wrap; }
+  .cover-pill {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 18px;
+    border: 1px solid rgba(201,168,76,0.4);
+    color: rgba(255,255,255,0.7);
+    border-radius: 2px;
+  }
+  .cover-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .cover-prepared { font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 1px; line-height: 2; }
+  .cover-prepared strong { color: rgba(255,255,255,0.65); font-weight: 500; }
+  .cover-date {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: var(--gold);
+  }
+
+  /* ── MAIN WRAPPER ── */
+  .document { max-width: 900px; margin: 0 auto; padding: 80px 60px; }
+
+  /* ── SECTION HEADERS ── */
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-label::after {
+    content: '';
+    display: block;
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border), transparent);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 32px;
+    line-height: 1.2;
+  }
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border-light);
+    margin: 72px 0;
+  }
+
+  /* ── EXECUTIVE SUMMARY ── */
+  .exec-summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 40px;
+  }
+  .exec-col { padding: 36px; }
+  .exec-col:first-child { border-right: 1px solid var(--border); }
+  .exec-col-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+  .exec-col p { color: var(--text-body); font-size: 14.5px; line-height: 1.75; }
+
+  /* ── KPI STRIP ── */
+  .kpi-strip {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 48px;
+  }
+  .kpi-cell {
+    padding: 24px 18px;
+    text-align: center;
+    border-right: 1px solid var(--border);
+  }
+  .kpi-cell:last-child { border-right: none; }
+  .kpi-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--navy);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .kpi-number.highlight { color: var(--gold); }
+  .kpi-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+
+  /* ── OBJECTIVES ── */
+  .objectives-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .objective-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .objective-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+  }
+  .objective-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--border-light);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .objective-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+    letter-spacing: 0.3px;
+  }
+  .objective-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.65; }
+
+  /* ── ROOT CAUSE ── */
+  .cause-list { list-style: none; margin-bottom: 40px; }
+  .cause-item {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--border-light);
+    padding: 28px 0;
+    align-items: start;
+  }
+  .cause-item:last-child { border-bottom: none; }
+  .cause-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: rgba(201,168,76,0.25);
+    line-height: 1;
+    padding-top: 4px;
+  }
+  .cause-content {}
+  .cause-title { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+  .cause-desc { font-size: 14px; color: var(--text-muted); line-height: 1.65; }
+
+  /* ── BUDGET ALLOCATION ── */
+  .budget-header {
+    background: var(--navy);
+    color: white;
+    padding: 28px 36px;
+    border-radius: 4px 4px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+  }
+  .budget-header-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold-light); }
+  .budget-header-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: white;
+  }
+  .budget-header-sub { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 2px; letter-spacing: 1px; }
+  .budget-table { width: 100%; border-collapse: collapse; }
+  .budget-table-wrap {
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    overflow: hidden;
+    margin-bottom: 48px;
+  }
+  .budget-table th {
+    background: #F4F0E6;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 12px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .budget-table td {
+    padding: 18px 20px;
+    font-size: 14px;
+    color: var(--text-body);
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+  }
+  .budget-table tr:last-child td { border-bottom: none; }
+  .budget-table tr:hover td { background: var(--gold-pale); }
+  .budget-category { font-weight: 600; color: var(--navy); }
+  .budget-pct {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--gold);
+  }
+  .budget-amount { font-weight: 500; color: var(--navy); }
+  .budget-bar-wrap { width: 100%; height: 6px; background: #E8E2D0; border-radius: 3px; margin-top: 6px; }
+  .budget-bar { height: 6px; background: var(--gold); border-radius: 3px; }
+  .budget-keywords { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+  /* ── ROADMAP ── */
+  .roadmap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 48px;
+  }
+  .roadmap-cell {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 28px 24px;
+  }
+  .roadmap-month {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .roadmap-phase {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+  .roadmap-tasks { list-style: none; }
+  .roadmap-task {
+    font-size: 13px;
+    color: var(--text-muted);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .roadmap-task:last-child { border-bottom: none; }
+  .roadmap-task::before {
+    content: '→';
+    color: var(--gold);
+    flex-shrink: 0;
+    font-size: 11px;
+    margin-top: 2px;
+  }
+
+  /* ── KPI SECTION ── */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .kpi-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .kpi-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--gold-pale);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .kpi-icon svg { width: 16px; height: 16px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+  .kpi-card-label { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .kpi-card-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+  /* ── REVIEW & SUBSCRIBE BLOCKS ── */
+  .strategy-blocks {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .strategy-block {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 36px 32px;
+  }
+  .strategy-block-icon {
+    width: 44px; height: 44px;
+    border-radius: 4px;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+  }
+  .strategy-block-icon svg { width: 20px; height: 20px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+  .strategy-block h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .strategy-block p { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; }
+  .strategy-bullets { list-style: none; }
+  .strategy-bullet {
+    font-size: 13.5px;
+    color: var(--text-body);
+    padding: 7px 0;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    gap: 10px;
+  }
+  .strategy-bullet:last-child { border-bottom: none; }
+  .strategy-bullet::before { content: '•'; color: var(--gold); font-size: 16px; line-height: 1; flex-shrink: 0; }
+
+  /* ── CONCLUSION ── */
+  .conclusion-box {
+    background: var(--navy);
+    border-radius: 4px;
+    padding: 56px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .conclusion-box::before {
+    content: '';
+    position: absolute;
+    bottom: -80px; right: -80px;
+    width: 280px; height: 280px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.12);
+  }
+  .conclusion-box::after {
+    content: '';
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.08);
+  }
+  .conclusion-eyebrow {
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+  .conclusion-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 2;
+  }
+  .conclusion-body {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    max-width: 580px;
+    margin: 0 auto 36px;
+    line-height: 1.75;
+    position: relative;
+    z-index: 2;
+  }
+  .conclusion-signature {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    color: var(--gold-light);
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ── PROSE BODY ── */
+  .prose { font-size: 15px; color: var(--text-body); line-height: 1.8; margin-bottom: 40px; }
+  .prose p { margin-bottom: 16px; }
+  .prose strong { color: var(--navy); font-weight: 600; }
+
+  /* ── MARKET CHANNELS ── */
+  .channels-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+  .channel-tag {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 18px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .channel-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* ── REVIEW HIGHLIGHTS ── */
+  .review-highlights {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+  .review-tag {
+    background: var(--gold-pale);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 14px 16px;
+    font-size: 12.5px;
+    color: var(--navy);
+    text-align: center;
+    font-weight: 500;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    .cover { page-break-after: always; }
+    .section-divider { page-break-before: always; }
+  }
+  @media (max-width: 700px) {
+    .cover { padding: 40px 28px; }
+    .cover-title { font-size: 38px; }
+    .document { padding: 48px 24px; }
+    .exec-summary-grid { grid-template-columns: 1fr; }
+    .objectives-grid { grid-template-columns: 1fr; }
+    .kpi-strip { grid-template-columns: repeat(3, 1fr); }
+    .strategy-blocks { grid-template-columns: 1fr; }
+    .roadmap { grid-template-columns: 1fr; }
+    .kpi-grid { grid-template-columns: 1fr 1fr; }
+    .channels-grid { grid-template-columns: 1fr 1fr; }
+    .review-highlights { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ COVER ══════════ -->
+<div class="cover">
+  <div class="cover-top">
+    <div class="cover-logo">TitanVex</div>
+    <div class="cover-meta">
+      Prepared by Muhammad Anas<br>
+      June 2026 · Confidential
+    </div>
+  </div>
+
+  <div class="cover-center">
+    <div class="cover-eyebrow">Amazon Growth Strategy</div>
+    <h1 class="cover-title">Lymphaid<br><span>Acceleration</span><br>Blueprint</h1>
+    <p class="cover-subtitle">PPC Recovery · Organic Ranking · Market Expansion</p>
+    <div class="cover-pills">
+      <span class="cover-pill">6-Month Roadmap</span>
+      <span class="cover-pill">$2,800 Monthly Budget</span>
+      <span class="cover-pill">Profitability Framework</span>
+    </div>
+  </div>
+
+  <div class="cover-bottom">
+    <div class="cover-prepared">
+      Prepared For <strong>TitanVex</strong><br>
+      Prepared By <strong>Muhammad Anas</strong>
+    </div>
+    <div class="cover-date">June 2026</div>
+  </div>
+</div>
+
+<!-- ══════════ DOCUMENT BODY ══════════ -->
+<div class="document">
+
+  <!-- EXECUTIVE SUMMARY -->
+  <div class="section-label">01 — Overview</div>
+  <h2 class="section-title">Executive Summary</h2>
+
+  <div class="exec-summary-grid">
+    <div class="exec-col">
+      <div class="exec-col-label">Situation</div>
+      <p>Monthly revenue has declined from approximately $2,500 to roughly $500. This decline is primarily operational rather than product-related. Recent listing improvements — Premium A+ Content, enhanced imagery, and SEO optimization — have substantially improved conversion capability, yet meaningful growth has not followed due to an absent customer acquisition system.</p>
+    </div>
+    <div class="exec-col">
+      <div class="exec-col-label">Opportunity</div>
+      <p>The primary challenge is visibility. Current advertising suffers from campaign fragmentation, inefficient keyword distribution, insufficient negative targeting, and overexposure to highly competitive terms. This strategy builds a sustainable growth framework that restores sales velocity, improves organic visibility, and creates a predictable path toward long-term profitability.</p>
+    </div>
+  </div>
+
+  <!-- KPI STRIP -->
+  <div class="kpi-strip">
+    <div class="kpi-cell">
+      <span class="kpi-number highlight">$500</span>
+      <span class="kpi-label">Current Monthly Revenue</span>
+    </div>
+    <div class="kpi-cell">
+      <span class="kpi-number">$2,500</span>
+      <span class="kpi-label">Revenue Peak</span>
+    </div>
+    <div class="kpi-cell">
+      <span class="kpi-number highlight">$2,800</span>
+      <span class="kpi-label">Monthly Ad Budget</span>
+    </div>
+    <div class="kpi-cell">
+      <span class="kpi-number">28</span>
+      <span class="kpi-label">Reviews</span>
+    </div>
+    <div class="kpi-cell">
+      <span class="kpi-number">4.1★</span>
+      <span class="kpi-label">Average Rating</span>
+    </div>
+    <div class="kpi-cell">
+      <span class="kpi-number">13</span>
+      <span class="kpi-label">S&S Subscribers</span>
+    </div>
+  </div>
+
+  <!-- OBJECTIVES -->
+  <div class="objectives-grid">
+    <div class="objective-card">
+      <div class="objective-num">01</div>
+      <div class="objective-title">Restore Market Traction</div>
+      <p class="objective-desc">Generate consistent sales volume and re-establish relevance within the lymphatic wellness category.</p>
+    </div>
+    <div class="objective-card">
+      <div class="objective-num">02</div>
+      <div class="objective-title">Build Organic Ranking Assets</div>
+      <p class="objective-desc">Leverage PPC to improve keyword ranking positions and progressively reduce reliance on paid traffic.</p>
+    </div>
+    <div class="objective-card">
+      <div class="objective-num">03</div>
+      <div class="objective-title">Scale Profitably</div>
+      <p class="objective-desc">Identify profitable acquisition channels and concentrate investment in campaigns that demonstrate measurable returns.</p>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ROOT CAUSE ANALYSIS -->
+  <div class="section-label">02 — Diagnosis</div>
+  <h2 class="section-title">Root Cause Analysis</h2>
+
+  <ul class="cause-list">
+    <li class="cause-item">
+      <div class="cause-number">01</div>
+      <div class="cause-content">
+        <div class="cause-title">Campaign Structure Inefficiencies</div>
+        <div class="cause-desc">Multiple match types coexist within the same campaigns alongside excessive keyword quantities — in several cases between 50 and 100 per campaign. This prevents Amazon's algorithm from identifying winning search terms and distributes budget inefficiently, creating slower learning cycles and inconsistent performance.</div>
+      </div>
+    </li>
+    <li class="cause-item">
+      <div class="cause-number">02</div>
+      <div class="cause-content">
+        <div class="cause-title">Lack of Negative Targeting</div>
+        <div class="cause-desc">Broad and Auto campaigns operate without sufficient negative keyword implementation. This creates significant budget leakage by continuously funding low-relevance search terms that are unlikely to convert, constraining overall account efficiency.</div>
+      </div>
+    </li>
+    <li class="cause-item">
+      <div class="cause-number">03</div>
+      <div class="cause-content">
+        <div class="cause-title">Overexposure to Competitive Keywords</div>
+        <div class="cause-desc">Historical campaigns are heavily focused on broad category terms — Lymphatic Drainage Supplement, Lymph Cleanse, Detox Supplement — that carry high search volume but also elevated CPCs. For a product with limited review authority and a 34% gross margin, this creates unnecessary profitability pressure.</div>
+      </div>
+    </li>
+    <li class="cause-item">
+      <div class="cause-number">04</div>
+      <div class="cause-content">
+        <div class="cause-title">Limited Social Proof</div>
+        <div class="cause-desc">A review count of 28 and a 4.1-star rating place TitanVex Lymphaid at a significant conversion disadvantage relative to more established competitors. This impacts both advertising performance and organic ranking potential.</div>
+      </div>
+    </li>
+    <li class="cause-item">
+      <div class="cause-number">05</div>
+      <div class="cause-content">
+        <div class="cause-title">Declining Organic Visibility</div>
+        <div class="cause-desc">Reduced sales velocity has contributed to weakened keyword ranking. As organic visibility diminishes, dependence on paid traffic intensifies — creating a reinforcing cycle that becomes increasingly difficult and costly to sustain.</div>
+      </div>
+    </li>
+  </ul>
+
+  <hr class="section-divider">
+
+  <!-- MARKET OPPORTUNITY -->
+  <div class="section-label">03 — Opportunity</div>
+  <h2 class="section-title">Market Opportunity Analysis</h2>
+
+  <div class="prose">
+    <p>TitanVex Lymphaid's diverse ingredient profile enables participation across multiple consumer health segments simultaneously — a meaningful structural advantage over competitors that rely exclusively on lymphatic drainage positioning. This diversification expands the addressable market and reduces dependency on any single keyword category.</p>
+  </div>
+
+  <div class="channels-grid">
+    <div class="channel-tag">Lymphatic Support</div>
+    <div class="channel-tag">Detoxification</div>
+    <div class="channel-tag">Herbal Wellness</div>
+    <div class="channel-tag">Respiratory Support</div>
+    <div class="channel-tag">Immune Support</div>
+    <div class="channel-tag">Women's Wellness</div>
+    <div class="channel-tag">Natural Cleansing</div>
+    <div class="channel-tag">Chlorophyll Supplements</div>
+    <div class="channel-tag">Mullein Supplements</div>
+  </div>
+
+  <!-- CUSTOMER REVIEW INSIGHTS -->
+  <div class="section-label" style="margin-top: 0;">04 — Voice of Customer</div>
+  <h2 class="section-title">Customer Review Insights</h2>
+
+  <div class="prose">
+    <p>Reviews consistently indicate gradual improvement and gentle support rather than dramatic or immediate transformation. Advertising messaging should therefore emphasize sustainable wellness support — an authentic, credible positioning that aligns with actual customer experience.</p>
+  </div>
+
+  <div class="review-highlights">
+    <div class="review-tag">Reduced facial puffiness</div>
+    <div class="review-tag">Improved wellness feeling</div>
+    <div class="review-tag">Gentle lymphatic support</div>
+    <div class="review-tag">Improved daily balance</div>
+    <div class="review-tag">Easy to swallow</div>
+    <div class="review-tag">No digestive discomfort</div>
+    <div class="review-tag">No unpleasant aftertaste</div>
+    <div class="review-tag">Consistent results</div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- BUDGET ALLOCATION -->
+  <div class="section-label">05 — Advertising</div>
+  <h2 class="section-title">PPC Budget Allocation</h2>
+
+  <div class="budget-header">
+    <div>
+      <div class="budget-header-label">Total Monthly Investment</div>
+      <div class="budget-header-sub">Structured across 6 strategic functions</div>
+    </div>
+    <div>
+      <div class="budget-header-amount">$2,800</div>
+    </div>
+  </div>
+
+  <div class="budget-table-wrap">
+    <table class="budget-table">
+      <thead>
+        <tr>
+          <th style="width: 28%;">Campaign Function</th>
+          <th style="width: 10%;">Allocation</th>
+          <th style="width: 14%;">Monthly Budget</th>
+          <th style="width: 48%;">Primary Keywords &amp; Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="budget-category">Core Revenue Keywords</div>
+            <div class="budget-bar-wrap"><div class="budget-bar" style="width: 35%;"></div></div>
+          </td>
+          <td><span class="budget-pct">35%</span></td>
+          <td><span class="budget-amount">$980</span></td>
+          <td>
+            <div>Highest-intent search terms for lymphatic support. Primary revenue drivers.</div>
+            <div class="budget-keywords">lymphatic drainage supplement · lymph cleanse · lymphatic detox</div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="budget-category">Discovery Campaigns</div>
+            <div class="budget-bar-wrap"><div class="budget-bar" style="width: 20%;"></div></div>
+          </td>
+          <td><span class="budget-pct">20%</span></td>
+          <td><span class="budget-amount">$560</span></td>
+          <td>
+            <div>Auto, Broad &amp; Phrase campaigns to identify winning search terms that graduate to Exact Match.</div>
+            <div class="budget-keywords">Account's research engine — ongoing keyword harvesting</div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="budget-category">Ingredient-Based</div>
+            <div class="budget-bar-wrap"><div class="budget-bar" style="width: 15%;"></div></div>
+          </td>
+          <td><span class="budget-pct">15%</span></td>
+          <td><span class="budget-amount">$420</span></td>
+          <td>
+            <div>Lower-cost traffic segments leveraging the product's unique ingredient profile.</div>
+            <div class="budget-keywords">chlorophyll · mullein · echinacea · garlic · red clover</div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="budget-category">Competitor Targeting</div>
+            <div class="budget-bar-wrap"><div class="budget-bar" style="width: 10%;"></div></div>
+          </td>
+          <td><span class="budget-pct">10%</span></td>
+          <td><span class="budget-amount">$280</span></td>
+          <td>
+            <div>Product targeting campaigns reaching shoppers already evaluating competing alternatives.</div>
+            <div class="budget-keywords">ASIN targeting · competitor product pages</div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="budget-category">Ranking Campaigns</div>
+            <div class="budget-bar-wrap"><div class="budget-bar" style="width: 10%;"></div></div>
+          </td>
+          <td><span class="budget-pct">10%</span></td>
+          <td><span class="budget-amount">$280</span></td>
+          <td>
+            <div>Dedicated campaigns to improve organic visibility for strategic keywords. Conversion velocity over immediate profitability.</div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="budget-category">Spanish Language</div>
+            <div class="budget-bar-wrap"><div class="budget-bar" style="width: 5%;"></div></div>
+          </td>
+          <td><span class="budget-pct">5%</span></td>
+          <td><span class="budget-amount">$140</span></td>
+          <td>
+            <div>Growing underutilized segment with lower CPC and meaningful incremental volume opportunity.</div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="budget-category">Testing &amp; Innovation</div>
+            <div class="budget-bar-wrap"><div class="budget-bar" style="width: 5%;"></div></div>
+          </td>
+          <td><span class="budget-pct">5%</span></td>
+          <td><span class="budget-amount">$140</span></td>
+          <td>
+            <div>Reserved for experimentation and adaptation to emerging opportunities.</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- GROWTH STRATEGIES -->
+  <div class="section-label">06 — Retention & Authority</div>
+  <h2 class="section-title">Supporting Growth Initiatives</h2>
+
+  <div class="strategy-blocks">
+    <div class="strategy-block">
+      <div class="strategy-block-icon">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16v12H4z"/><path d="M8 20h8M12 16v4"/><circle cx="8" cy="10" r="1" fill="currentColor"/><circle cx="12" cy="10" r="1" fill="currentColor"/><circle cx="16" cy="10" r="1" fill="currentColor"/></svg>
+      </div>
+      <h3>Subscribe & Save Growth</h3>
+      <p>Recurring customers represent the highest-value asset in supplement retail. The current 13-subscriber base provides a foundation; an aggressive first-order incentive will accelerate enrollment and improve revenue predictability.</p>
+      <ul class="strategy-bullets">
+        <li class="strategy-bullet">Introduce 20% first-order coupon alongside existing 10% S&S discount — creating a perceived 30% saving</li>
+        <li class="strategy-bullet">Objective is customer lifetime value, not single-order conversion</li>
+        <li class="strategy-bullet">As subscription volume grows, advertising dependency decreases</li>
+        <li class="strategy-bullet">Revenue becomes more predictable and structurally stronger</li>
+      </ul>
+    </div>
+    <div class="strategy-block">
+      <div class="strategy-block-icon">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <h3>Review Acquisition Strategy</h3>
+      <p>Increasing review authority is a parallel business objective that directly influences conversion rate, advertising efficiency, organic ranking, and customer trust.</p>
+      <ul class="strategy-bullets">
+        <li class="strategy-bullet">Request a Review automation for all fulfilled orders</li>
+        <li class="strategy-bullet">Amazon Vine participation to build initial review volume</li>
+        <li class="strategy-bullet">Enhanced customer support touchpoints</li>
+        <li class="strategy-bullet">Improved packaging experience to drive organic advocacy</li>
+        <li class="strategy-bullet">Follow-up sequence optimization</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ROADMAP -->
+  <div class="section-label">07 — Execution</div>
+  <h2 class="section-title">Six Month Growth Roadmap</h2>
+
+  <div class="roadmap">
+    <div class="roadmap-cell">
+      <div class="roadmap-month">Month 01</div>
+      <div class="roadmap-phase">Foundation &amp; Recovery</div>
+      <ul class="roadmap-tasks">
+        <li class="roadmap-task">Rebuild campaign architecture</li>
+        <li class="roadmap-task">Launch new campaign structure</li>
+        <li class="roadmap-task">Implement negative keyword framework</li>
+        <li class="roadmap-task">Preserve historical winners</li>
+      </ul>
+    </div>
+    <div class="roadmap-cell">
+      <div class="roadmap-month">Month 02</div>
+      <div class="roadmap-phase">Discovery &amp; Data</div>
+      <ul class="roadmap-tasks">
+        <li class="roadmap-task">Harvest search term reports</li>
+        <li class="roadmap-task">Identify profitable placements</li>
+        <li class="roadmap-task">Analyze keyword performance</li>
+        <li class="roadmap-task">Eliminate budget waste</li>
+      </ul>
+    </div>
+    <div class="roadmap-cell">
+      <div class="roadmap-month">Month 03</div>
+      <div class="roadmap-phase">Scaling Winners</div>
+      <ul class="roadmap-tasks">
+        <li class="roadmap-task">Increase Exact Match investment</li>
+        <li class="roadmap-task">Expand ingredient campaigns</li>
+        <li class="roadmap-task">Improve Top of Search visibility</li>
+      </ul>
+    </div>
+    <div class="roadmap-cell">
+      <div class="roadmap-month">Month 04</div>
+      <div class="roadmap-phase">Organic Ranking Acceleration</div>
+      <ul class="roadmap-tasks">
+        <li class="roadmap-task">Launch dedicated ranking campaigns</li>
+        <li class="roadmap-task">Focus on keyword dominance</li>
+        <li class="roadmap-task">Strengthen conversion signals</li>
+      </ul>
+    </div>
+    <div class="roadmap-cell">
+      <div class="roadmap-month">Month 05</div>
+      <div class="roadmap-phase">Expansion Phase</div>
+      <ul class="roadmap-tasks">
+        <li class="roadmap-task">Scale market coverage</li>
+        <li class="roadmap-task">Expand product targeting</li>
+        <li class="roadmap-task">Scale Spanish campaigns</li>
+        <li class="roadmap-task">Introduce new keyword clusters</li>
+      </ul>
+    </div>
+    <div class="roadmap-cell">
+      <div class="roadmap-month">Month 06</div>
+      <div class="roadmap-phase">Profitability Optimization</div>
+      <ul class="roadmap-tasks">
+        <li class="roadmap-task">Refine budget allocation</li>
+        <li class="roadmap-task">Improve TACOS efficiency</li>
+        <li class="roadmap-task">Stabilize long-term growth</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- SUCCESS METRICS -->
+  <div class="section-label">08 — Measurement</div>
+  <h2 class="section-title">Success Metrics</h2>
+
+  <div class="prose">
+    <p>Success will not be measured solely by advertising sales. Performance will be evaluated using business-level metrics that reflect the health of the entire growth system. As rankings strengthen and organic sales increase, advertising dependence should gradually diminish — improving structural profitability.</p>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <div>
+        <div class="kpi-card-label">Total Revenue Growth</div>
+        <div class="kpi-card-desc">Month-over-month total revenue including organic and paid contribution</div>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <div>
+        <div class="kpi-card-label">ACOS &amp; TACOS</div>
+        <div class="kpi-card-desc">Advertising Cost of Sale and Total Advertising Cost of Sale tracked monthly</div>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div>
+        <div class="kpi-card-label">Conversion Rate</div>
+        <div class="kpi-card-desc">Session-to-order conversion as a primary indicator of listing effectiveness</div>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </div>
+      <div>
+        <div class="kpi-card-label">Organic Keyword Rankings</div>
+        <div class="kpi-card-desc">Position tracking for strategic target keywords across the category</div>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div>
+        <div class="kpi-card-label">Subscribe &amp; Save Growth</div>
+        <div class="kpi-card-desc">Active subscriber count as a measure of customer retention and revenue predictability</div>
+      </div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div>
+        <div class="kpi-card-label">Review Growth</div>
+        <div class="kpi-card-desc">Velocity of new reviews and improvement in overall rating toward category benchmarks</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- CONCLUSION -->
+  <div class="conclusion-box">
+    <div class="conclusion-eyebrow">Strategic Conclusion</div>
+    <h2 class="conclusion-title">Building a Scalable<br>Growth System</h2>
+    <p class="conclusion-body">TitanVex Lymphaid possesses substantially more growth potential than current sales performance reflects. The product benefits from positive customer feedback, a unique ingredient profile, strong trust signals, and a recently optimized listing. The challenge is not product quality — it is visibility, campaign structure, and customer acquisition efficiency. By rebuilding the advertising framework, implementing structured keyword strategy, and diversifying acquisition channels, TitanVex can establish a sustainable foundation for category leadership.</p>
+    <div class="conclusion-signature">Muhammad Anas · June 2026</div>
+  </div>
+
+</div>
+</body>
+</html>
