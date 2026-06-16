@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sundae — 2026 Amazon PPC Performance Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --violet-900:#1d1235;
+  --violet-800:#2a1a52;
+  --violet-700:#4226a8;
+  --violet-600:#5b34d6;
+  --violet-500:#7c4dff;
+  --violet-400:#9d77ff;
+  --violet-300:#c4a8ff;
+  --orchid:#b06bff;
+  --ink:#16121f;
+  --slate:#5a5470;
+  --mist:#f6f3fd;
+  --paper:#fbfaff;
+  --line:rgba(91,52,214,.12);
+  --gold:#e7b94d;
+  --green:#34c98a;
+  --glass:rgba(255,255,255,.62);
+  --shadow-sm:0 2px 14px rgba(45,20,90,.06);
+  --shadow:0 18px 50px -20px rgba(45,20,90,.28);
+  --shadow-lg:0 40px 90px -30px rgba(45,20,90,.40);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  color:var(--ink);
+  background:
+    radial-gradient(1200px 700px at 85% -5%, rgba(124,77,255,.10), transparent 60%),
+    radial-gradient(900px 600px at -10% 30%, rgba(176,107,255,.08), transparent 55%),
+    var(--paper);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+h1,h2,h3,.display{font-family:'Fraunces',serif;letter-spacing:-.02em;line-height:1.08}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* ---------- reveal animation ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(251,250,255,.78);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.brandmark{display:flex;align-items:center;gap:11px;font-weight:700;font-size:15px;letter-spacing:-.01em}
+.logo-badge{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--violet-500),var(--violet-700));display:grid;place-items:center;box-shadow:0 6px 16px -4px rgba(91,52,214,.5)}
+.logo-badge svg{width:16px;height:16px}
+.topbar nav{display:flex;gap:26px;font-size:13.5px;font-weight:500}
+.topbar nav a{color:var(--slate);text-decoration:none;transition:color .2s}
+.topbar nav a:hover{color:var(--violet-600)}
+@media(max-width:760px){.topbar nav{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:84px 0 70px;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:46px 46px;mask-image:radial-gradient(700px 500px at 75% 20%,#000,transparent 78%);opacity:.55;z-index:0}
+.hero .wrap{position:relative;z-index:1}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--violet-600);background:rgba(124,77,255,.08);border:1px solid var(--line);padding:7px 15px;border-radius:100px}
+.eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(52,201,138,.18)}
+.hero h1{font-size:clamp(40px,6.4vw,76px);font-weight:600;margin:26px 0 18px;max-width:14ch}
+.hero h1 em{font-style:italic;color:var(--violet-600)}
+.hero .sub{font-size:clamp(16px,2vw,19px);color:var(--slate);max-width:58ch}
+.hero-meta{display:flex;flex-wrap:wrap;gap:38px;margin-top:46px;padding-top:30px;border-top:1px solid var(--line)}
+.hero-meta div span{display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);font-weight:600;margin-bottom:5px}
+.hero-meta div strong{font-family:'Fraunces',serif;font-size:20px;font-weight:600}
+
+/* ---------- section heading ---------- */
+section{padding:74px 0;position:relative}
+.sec-head{margin-bottom:42px;max-width:64ch}
+.sec-num{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:var(--violet-500);letter-spacing:.1em}
+.sec-head h2{font-size:clamp(28px,4vw,42px);font-weight:600;margin:12px 0 14px}
+.sec-head p{color:var(--slate);font-size:16px}
+
+/* ---------- KPI hero cards ---------- */
+.kpi-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media(max-width:900px){.kpi-cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.kpi-cards{grid-template-columns:1fr 1fr}}
+.kpi-card{position:relative;background:var(--glass);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.7);box-shadow:var(--shadow-sm);border-radius:20px;padding:24px 22px;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.kpi-card::before{content:"";position:absolute;inset:0;border-radius:20px;padding:1px;background:linear-gradient(140deg,rgba(124,77,255,.45),transparent 45%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.kpi-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.kpi-card .ic{width:38px;height:38px;border-radius:11px;background:linear-gradient(135deg,rgba(124,77,255,.16),rgba(124,77,255,.06));display:grid;place-items:center;color:var(--violet-600);margin-bottom:16px}
+.kpi-card .ic svg{width:19px;height:19px}
+.kpi-card .val{font-family:'Fraunces',serif;font-size:32px;font-weight:600;line-height:1;background:linear-gradient(120deg,var(--violet-700),var(--orchid));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.kpi-card .lbl{font-size:13px;color:var(--slate);font-weight:500;margin-top:8px}
+.kpi-card .tag{margin-top:14px;font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--violet-600);background:rgba(124,77,255,.08);display:inline-block;padding:4px 10px;border-radius:8px}
+
+/* ---------- charts ---------- */
+.chart-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:840px){.chart-grid{grid-template-columns:1fr}}
+.chart-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px 24px 18px;box-shadow:var(--shadow-sm);transition:box-shadow .3s,transform .3s}
+.chart-card:hover{box-shadow:var(--shadow)}
+.chart-card.full{grid-column:1/-1}
+.chart-card h3{font-size:18px;font-weight:600;margin-bottom:3px}
+.chart-card .ch-sub{font-size:13px;color:var(--slate);margin-bottom:18px}
+.chart-box{position:relative;height:268px}
+.chart-card.full .chart-box{height:320px}
+
+/* ---------- KPI table ---------- */
+.tbl-wrap{border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow-sm);background:#fff}
+table.kpi-table{width:100%;border-collapse:collapse;font-size:14.5px}
+.kpi-table thead th{background:linear-gradient(120deg,var(--violet-800),var(--violet-600));color:#fff;text-align:left;padding:16px 20px;font-weight:600;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase}
+.kpi-table tbody td{padding:18px 20px;border-bottom:1px solid var(--line);vertical-align:top}
+.kpi-table tbody tr{transition:background .2s}
+.kpi-table tbody tr:hover{background:var(--mist)}
+.kpi-table tbody tr:last-child td{border-bottom:none}
+.kpi-name{font-weight:600;color:var(--ink);display:flex;gap:12px;align-items:flex-start}
+.kpi-name .n{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--violet-500);background:rgba(124,77,255,.08);border-radius:7px;padding:2px 7px;flex:none;margin-top:1px}
+.kpi-target{color:var(--violet-700);font-weight:600}
+.kpi-why{color:var(--slate)}
+.freq{font-size:12px;font-weight:600;color:var(--violet-600);white-space:nowrap}
+@media(max-width:760px){
+  .kpi-table thead{display:none}
+  .kpi-table,.kpi-table tbody,.kpi-table tr,.kpi-table td{display:block;width:100%}
+  .kpi-table tr{border-bottom:1px solid var(--line);padding:8px 0}
+  .kpi-table td{border:none;padding:6px 20px}
+  .kpi-table td::before{content:attr(data-l);display:block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--violet-500);font-weight:700;margin-bottom:3px}
+}
+
+/* ---------- inventory note ---------- */
+.note{position:relative;background:linear-gradient(135deg,var(--violet-800),var(--violet-700));color:#fff;border-radius:24px;padding:46px 44px;overflow:hidden;box-shadow:var(--shadow-lg)}
+.note::after{content:"";position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(176,107,255,.5),transparent 65%)}
+.note .ribbon{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--violet-300);margin-bottom:18px}
+.note p{font-family:'Fraunces',serif;font-size:clamp(19px,2.4vw,26px);font-weight:400;line-height:1.42;position:relative;z-index:1;max-width:60ch}
+
+/* ---------- timeline ---------- */
+.timeline{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:840px){.timeline{grid-template-columns:1fr}}
+.phase{position:relative;background:var(--glass);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.7);border-radius:22px;padding:30px 26px;box-shadow:var(--shadow-sm);transition:transform .35s,box-shadow .35s}
+.phase::before{content:"";position:absolute;inset:0;border-radius:22px;padding:1px;background:linear-gradient(160deg,rgba(124,77,255,.4),transparent 50%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.phase:hover{transform:translateY(-7px);box-shadow:var(--shadow)}
+.phase .ph-num{font-family:'Fraunces',serif;font-size:54px;font-weight:600;line-height:.8;color:rgba(124,77,255,.16);margin-bottom:6px}
+.phase .ph-tag{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--violet-600)}
+.phase h3{font-size:21px;font-weight:600;margin:6px 0 4px}
+.phase .dur{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--violet-700);background:rgba(124,77,255,.09);padding:5px 12px;border-radius:9px;margin-bottom:18px}
+.phase ul{list-style:none;margin:0 0 18px}
+.phase ul li{position:relative;padding-left:22px;font-size:14px;color:var(--ink);margin-bottom:8px}
+.phase ul li::before{content:"";position:absolute;left:2px;top:9px;width:7px;height:7px;border-radius:2px;background:var(--violet-500);transform:rotate(45deg)}
+.phase .outcome{font-size:13.5px;color:var(--slate);border-top:1px dashed var(--line);padding-top:14px}
+.phase .outcome b{color:var(--violet-700);font-weight:600;display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+
+/* ---------- commitment ---------- */
+.commit{background:linear-gradient(135deg,var(--violet-900),var(--violet-700));border-radius:28px;padding:64px 56px;color:#fff;position:relative;overflow:hidden;box-shadow:var(--shadow-lg)}
+.commit::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:42px 42px;mask-image:radial-gradient(600px 400px at 80% 100%,#000,transparent 75%)}
+.commit .inner{position:relative;z-index:1;max-width:72ch}
+.commit .eyebrow{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.18);color:#fff}
+.commit h2{font-size:clamp(28px,4vw,44px);font-weight:500;margin:24px 0 22px;color:#fff}
+.commit p{font-size:clamp(17px,2vw,20px);color:rgba(255,255,255,.86);font-family:'Fraunces',serif;font-weight:400;line-height:1.5}
+.sign{display:flex;align-items:center;gap:16px;margin-top:42px;padding-top:30px;border-top:1px solid rgba(255,255,255,.16)}
+.sign .av{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--violet-400),var(--orchid));display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:600;font-size:20px;color:#fff}
+.sign .who span{display:block;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--violet-300);font-weight:600}
+.sign .who strong{font-family:'Fraunces',serif;font-size:20px;font-weight:600}
+
+/* ---------- footer ---------- */
+footer{padding:46px 0 60px;text-align:center;color:var(--slate);font-size:13px}
+footer .fbrand{font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:var(--ink);margin-bottom:6px}
+
+/* ---------- print ---------- */
+@media print{
+  body{background:#fff}
+  .topbar{position:static}
+  .reveal{opacity:1!important;transform:none!important}
+  section{padding:30px 0;page-break-inside:avoid}
+  .note,.commit,.phase,.kpi-card,.chart-card{box-shadow:none!important;border:1px solid #ddd}
+  .hero-grid,.commit::before{display:none}
+  a[href^="#"]{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="brandmark">
+      <span class="logo-badge">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 14h3v6H4zM10 9h3v11h-3zM16 4h3v16h-3z" fill="#fff"/></svg>
+      </span>
+      AMZ One · <span style="color:var(--violet-600)">Sundae</span>
+    </div>
+    <nav>
+      <a href="#objectives">Objectives</a>
+      <a href="#history">Performance</a>
+      <a href="#kpis">KPI Framework</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#commitment">Commitment</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-grid"></div>
+  <div class="wrap">
+    <span class="eyebrow reveal"><span class="dot"></span> Amazon PPC Management · Re-Engagement Proposal</span>
+    <h1 class="reveal">A measured path back to <em>profitable</em> growth for Sundae.</h1>
+    <p class="sub reveal">A performance framework built around inventory realities and seasonal momentum — clear targets, disciplined optimization, and a structured ramp from re-launch to peak-season scaling.</p>
+    <div class="hero-meta reveal">
+      <div><span>Brand</span><strong>Sundae</strong></div>
+      <div><span>Prepared By</span><strong>Muhammad Anas</strong></div>
+      <div><span>Engagement Year</span><strong>2026</strong></div>
+      <div><span>Scope</span><strong>Foam Products</strong></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ OBJECTIVES / TARGET CARDS ============ -->
+<section id="objectives">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">01 — Headline Targets</div>
+      <h2>What we're working toward in 2026</h2>
+      <p>These are the anchor metrics of the engagement. Each is positioned as a target to optimize toward — not a guarantee — and is contingent on inventory availability and campaign momentum.</p>
+    </div>
+    <div class="kpi-cards">
+      <div class="kpi-card reveal">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v6"/></svg></span>
+        <div class="val">10–20%</div>
+        <div class="lbl">YoY sales growth in active inventory periods</div>
+        <span class="tag">Sales Growth</span>
+      </div>
+      <div class="kpi-card reveal">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        <div class="val">4.0+</div>
+        <div class="lbl">Target ROAS after stabilization phase</div>
+        <span class="tag">ROAS</span>
+      </div>
+      <div class="kpi-card reveal">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16"/><path d="M8 16l3-4 3 2 4-6"/></svg></span>
+        <div class="val">&lt;30%</div>
+        <div class="lbl">ACOS ceiling — long-term 25–30% band</div>
+        <span class="tag">ACOS</span>
+      </div>
+      <div class="kpi-card reveal">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 7h11a3 3 0 010 6H8a3 3 0 000 6h11"/></svg></span>
+        <div class="val">&lt;10%</div>
+        <div class="lbl">TACOS — ad efficiency vs total revenue</div>
+        <span class="tag">TACOS</span>
+      </div>
+      <div class="kpi-card reveal">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><rect x="7" y="11" width="3" height="7"/><rect x="13" y="7" width="3" height="11"/></svg></span>
+        <div class="val">10–15%</div>
+        <div class="lbl">Conversion rate via listing & keyword work</div>
+        <span class="tag">CVR</span>
+      </div>
+      <div class="kpi-card reveal">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg></span>
+        <div class="val">95%+</div>
+        <div class="lbl">In-stock rate on primary SKUs</div>
+        <span class="tag">Inventory Health</span>
+      </div>
+      <div class="kpi-card reveal">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"/><path d="M2 12h20M12 2a15 15 0 010 20"/></svg></span>
+        <div class="val">↑ NTB</div>
+        <div class="lbl">Growing new-to-brand customer share</div>
+        <span class="tag">Acquisition</span>
+      </div>
+      <div class="kpi-card reveal">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></span>
+        <div class="val">Balanced</div>
+        <div class="lbl">Healthy paid-to-organic sales mix</div>
+        <span class="tag">PPC Contribution</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HISTORICAL PERFORMANCE ============ -->
+<section id="history">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">02 — Historical Reference</div>
+      <h2>Where we left off — Sep to Dec 2025</h2>
+      <p>Our prior four-month engagement spanned peak season. These trends inform realistic 2026 targets and highlight the seasonal demand curve we'll be rebuilding momentum into.</p>
+    </div>
+    <div class="chart-grid">
+      <div class="chart-card reveal">
+        <h3>Sales Trend</h3>
+        <p class="ch-sub">Total revenue by month (USD)</p>
+        <div class="chart-box"><canvas id="cSales"></canvas></div>
+      </div>
+      <div class="chart-card reveal">
+        <h3>ROAS Trend</h3>
+        <p class="ch-sub">Ad sales ÷ ad spend</p>
+        <div class="chart-box"><canvas id="cRoas"></canvas></div>
+      </div>
+      <div class="chart-card reveal">
+        <h3>ACOS &amp; TACOS Trend</h3>
+        <p class="ch-sub">Advertising cost efficiency (%)</p>
+        <div class="chart-box"><canvas id="cAcos"></canvas></div>
+      </div>
+      <div class="chart-card reveal">
+        <h3>Units Sold</h3>
+        <p class="ch-sub">PPC vs organic unit volume</p>
+        <div class="chart-box"><canvas id="cUnits"></canvas></div>
+      </div>
+      <div class="chart-card full reveal">
+        <h3>Revenue vs Ad Revenue</h3>
+        <p class="ch-sub">Total revenue against attributed ad sales (USD)</p>
+        <div class="chart-box"><canvas id="cRev"></canvas></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KPI FRAMEWORK TABLE ============ -->
+<section id="kpis">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">03 — KPI Framework</div>
+      <h2>2026 Performance Objectives &amp; Success Metrics</h2>
+      <p>A complete view of the metrics we manage to, why each matters to Sundae's business, and how often we review them.</p>
+    </div>
+    <div class="tbl-wrap reveal">
+      <table class="kpi-table">
+        <thead>
+          <tr><th style="width:23%">KPI</th><th style="width:25%">Target</th><th style="width:37%">Why it matters</th><th style="width:15%">Frequency</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-l="KPI"><div class="kpi-name"><span class="n">01</span>Sales Growth</div></td>
+            <td data-l="Target" class="kpi-target">10–20% YoY during active inventory periods</td>
+            <td data-l="Why it matters" class="kpi-why">Depends on inventory availability, Buy Box ownership, market demand and seasonal trends.</td>
+            <td data-l="Frequency"><span class="freq">Monthly</span></td>
+          </tr>
+          <tr>
+            <td data-l="KPI"><div class="kpi-name"><span class="n">02</span>Total Revenue</div></td>
+            <td data-l="Target" class="kpi-target">Consistent MoM growth post-stabilization</td>
+            <td data-l="Why it matters" class="kpi-why">Maximizes revenue capture during Q4 seasonal demand once campaigns are stable.</td>
+            <td data-l="Frequency"><span class="freq">Monthly</span></td>
+          </tr>
+          <tr>
+            <td data-l="KPI"><div class="kpi-name"><span class="n">03</span>ROAS</div></td>
+            <td data-l="Target" class="kpi-target">Maintain 4.0+ after stabilization</td>
+            <td data-l="Why it matters" class="kpi-why">Core profitability signal. The initial learning phase may temporarily run below target if PPC was paused.</td>
+            <td data-l="Frequency"><span class="freq">Weekly</span></td>
+          </tr>
+          <tr>
+            <td data-l="KPI"><div class="kpi-name"><span class="n">04</span>ACOS</div></td>
+            <td data-l="Target" class="kpi-target">Below 30% · long-term 25–30%</td>
+            <td data-l="Why it matters" class="kpi-why">Keeps advertising spend disciplined relative to attributed ad sales.</td>
+            <td data-l="Frequency"><span class="freq">Weekly</span></td>
+          </tr>
+          <tr>
+            <td data-l="KPI"><div class="kpi-name"><span class="n">05</span>TACOS</div></td>
+            <td data-l="Target" class="kpi-target">Maintain below 10%</td>
+            <td data-l="Why it matters" class="kpi-why">Measures advertising efficiency relative to total business revenue, not just ad sales.</td>
+            <td data-l="Frequency"><span class="freq">Monthly</span></td>
+          </tr>
+          <tr>
+            <td data-l="KPI"><div class="kpi-name"><span class="n">06</span>Conversion Rate</div></td>
+            <td data-l="Target" class="kpi-target">Maintain 10–15%</td>
+            <td data-l="Why it matters" class="kpi-why">Improved through listing optimization and keyword refinement; compounds ad efficiency.</td>
+            <td data-l="Frequency"><span class="freq">Monthly</span></td>
+          </tr>
+          <tr>
+            <td data-l="KPI"><div class="kpi-name"><span class="n">07</span>New-To-Brand Acquisition</div></td>
+            <td data-l="Target" class="kpi-target">Grow share of new customers</td>
+            <td data-l="Why it matters" class="kpi-why">Supports long-term customer growth and market expansion within the brand ecosystem.</td>
+            <td data-l="Frequency"><span class="freq">Monthly</span></td>
+          </tr>
+          <tr>
+            <td data-l="KPI"><div class="kpi-name"><span class="n">08</span>Customer Re-Engagement</div></td>
+            <td data-l="Target" class="kpi-target">Recover dormant & prior buyers</td>
+            <td data-l="Why it matters" class="kpi-why">Strategic advertising and promotions reactivate previously engaged audiences at lower cost.</td>
+            <td data-l="Frequency"><span class="freq">Monthly</span></td>
+          </tr>
+          <tr>
+            <td data-l="KPI"><div class="kpi-name"><span class="n">09</span>Inventory Health</div></td>
+            <td data-l="Target" class="kpi-target">95%+ in-stock on primary SKUs</td>
+            <td data-l="Why it matters" class="kpi-why">Advertising efficiency is heavily dependent on availability; stockouts during peak are minimized.</td>
+            <td data-l="Frequency"><span class="freq">Weekly</span></td>
+          </tr>
+          <tr>
+            <td data-l="KPI"><div class="kpi-name"><span class="n">10</span>Organic Rank Growth</div></td>
+            <td data-l="Target" class="kpi-target">Improve priority keyword ranks</td>
+            <td data-l="Why it matters" class="kpi-why">Increases organic contribution to overall sales and reduces dependence on paid.</td>
+            <td data-l="Frequency"><span class="freq">Monthly</span></td>
+          </tr>
+          <tr>
+            <td data-l="KPI"><div class="kpi-name"><span class="n">11</span>PPC Contribution</div></td>
+            <td data-l="Target" class="kpi-target">Balanced paid & organic mix</td>
+            <td data-l="Why it matters" class="kpi-why">A healthy mix increases overall account efficiency and resilience.</td>
+            <td data-l="Frequency"><span class="freq">Monthly</span></td>
+          </tr>
+          <tr>
+            <td data-l="KPI"><div class="kpi-name"><span class="n">12</span>Click-Through Rate</div></td>
+            <td data-l="Target" class="kpi-target">Above category benchmarks</td>
+            <td data-l="Why it matters" class="kpi-why">A direct signal of ad relevance; improved continuously through creative and targeting.</td>
+            <td data-l="Frequency"><span class="freq">Weekly</span></td>
+          </tr>
+          <tr>
+            <td data-l="KPI"><div class="kpi-name"><span class="n">13</span>CPC Efficiency</div></td>
+            <td data-l="Target" class="kpi-target">Reduce wasted spend</td>
+            <td data-l="Why it matters" class="kpi-why">Improves keyword profitability by reallocating budget toward converting terms.</td>
+            <td data-l="Frequency"><span class="freq">Weekly</span></td>
+          </tr>
+          <tr>
+            <td data-l="KPI"><div class="kpi-name"><span class="n">14</span>Market Share Expansion</div></td>
+            <td data-l="Target" class="kpi-target">Grow visibility across keyword groups</td>
+            <td data-l="Why it matters" class="kpi-why">Expands presence across priority keyword groups and category placements.</td>
+            <td data-l="Frequency"><span class="freq">Monthly</span></td>
+          </tr>
+          <tr>
+            <td data-l="KPI"><div class="kpi-name"><span class="n">15</span>Reporting &amp; Reviews</div></td>
+            <td data-l="Target" class="kpi-target">Monthly review + roadmap; quarterly planning</td>
+            <td data-l="Why it matters" class="kpi-why">Keeps strategy transparent and aligned through monthly KPI reviews and quarterly growth sessions.</td>
+            <td data-l="Frequency"><span class="freq">Monthly / Qtrly</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INVENTORY NOTE ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="note reveal">
+      <span class="ribbon">⬡ Executive Note · Inventory</span>
+      <p>Inventory availability remains one of the most significant factors affecting Amazon performance. Our strategy focuses on maximizing efficiency and growth opportunities for available foam products while maintaining consistent stock on primary SKUs — and preparing campaign and keyword structures so future product lines can be onboarded smoothly as they become available.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROADMAP / PHASES ============ -->
+<section id="roadmap">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">04 — Engagement Roadmap</div>
+      <h2>Three phases from re-launch to peak</h2>
+      <p>A structured ramp that acknowledges momentum may need rebuilding. Each phase has a clear focus and a defined outcome before we accelerate spend.</p>
+    </div>
+    <div class="timeline">
+      <div class="phase reveal">
+        <div class="ph-num">01</div>
+        <div class="ph-tag">Re-Launch & Stabilization</div>
+        <h3>Foundation building</h3>
+        <span class="dur">⏱ 30–45 Days</span>
+        <ul>
+          <li>Campaign reactivation</li>
+          <li>Data collection</li>
+          <li>Keyword validation</li>
+          <li>Bid calibration</li>
+          <li>Budget allocation</li>
+        </ul>
+        <div class="outcome"><b>Expected Outcome</b>Foundation building and performance stabilization.</div>
+      </div>
+      <div class="phase reveal">
+        <div class="ph-num">02</div>
+        <div class="ph-tag">Growth Optimization</div>
+        <h3>Scaling profitably</h3>
+        <span class="dur">⏱ 45–90 Days</span>
+        <ul>
+          <li>Scaling profitable campaigns</li>
+          <li>Increasing keyword coverage</li>
+          <li>Improving ROAS</li>
+          <li>Lowering ACOS</li>
+        </ul>
+        <div class="outcome"><b>Expected Outcome</b>Sustainable growth and stronger advertising efficiency.</div>
+      </div>
+      <div class="phase reveal">
+        <div class="ph-num">03</div>
+        <div class="ph-tag">Peak Season Scaling</div>
+        <h3>Maximum capture</h3>
+        <span class="dur">⏱ Q4 Seasonal Window</span>
+        <ul>
+          <li>Aggressive scaling</li>
+          <li>Inventory planning support</li>
+          <li>Holiday preparation</li>
+          <li>Market share expansion</li>
+        </ul>
+        <div class="outcome"><b>Expected Outcome</b>Maximum seasonal revenue capture.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KPI TARGET DASHBOARD ============ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">05 — Target Dashboard</div>
+      <h2>2026 KPI targets at a glance</h2>
+      <p>Core efficiency and growth targets normalized for quick visual reference against their performance bands.</p>
+    </div>
+    <div class="chart-card full reveal">
+      <h3>2026 KPI Target Dashboard</h3>
+      <p class="ch-sub">Target values across primary performance metrics</p>
+      <div class="chart-box"><canvas id="cDash"></canvas></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMMITMENT ============ -->
+<section id="commitment">
+  <div class="wrap">
+    <div class="commit reveal">
+      <div class="inner">
+        <span class="eyebrow">Our Commitment</span>
+        <h2>Built for sustainable, profitable growth.</h2>
+        <p>Our objective is not simply to increase advertising spend, but to build a scalable and profitable growth framework for Sundae. By combining inventory awareness, data-driven PPC management, conversion optimization and strategic growth planning, we aim to create sustainable long-term performance while maximizing opportunities during peak seasonal periods.</p>
+        <div class="sign">
+          <div class="av">MA</div>
+          <div class="who">
+            <span>Prepared By</span>
+            <strong>Muhammad Anas</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand">AMZ One · Sundae</div>
+    2026 Amazon PPC Performance Proposal — targets are objectives, not guarantees, and remain subject to inventory availability and market conditions.
+  </div>
+</footer>
+
+<script>
+/* ---------- scroll reveal ---------- */
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el);});
+
+/* ---------- chart theme ---------- */
+const V={d:'#5b34d6',m:'#7c4dff',l:'#b06bff',gold:'#e7b94d',green:'#34c98a',red:'#e8607a',slate:'#5a5470',grid:'rgba(91,52,214,.08)'};
+Chart.defaults.font.family="'Inter',sans-serif";
+Chart.defaults.font.size=12;
+Chart.defaults.color=V.slate;
+const months=['Sep','Oct','Nov','Dec'];
+const gFill=(ctx,c1,c2)=>{const g=ctx.createLinearGradient(0,0,0,260);g.addColorStop(0,c1);g.addColorStop(1,c2);return g;};
+const baseOpts={responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'#1d1235',padding:11,cornerRadius:9,titleFont:{weight:'600'}}},animation:{duration:1100,easing:'easeOutQuart'}};
+const pct=(v)=>v+'%';
+const usd=(v)=>'$'+v.toLocaleString();
+
+/* Sales */
+new Chart(document.getElementById('cSales'),{type:'line',data:{labels:months,datasets:[{data:[33261.27,43777.00,130494.85,71030.87],borderColor:V.d,borderWidth:3,tension:.4,fill:true,backgroundColor:(c)=>gFill(c.chart.ctx,'rgba(91,52,214,.28)','rgba(91,52,214,0)'),pointBackgroundColor:'#fff',pointBorderColor:V.d,pointBorderWidth:2.5,pointRadius:5,pointHoverRadius:7}]},options:{...baseOpts,scales:{y:{grid:{color:V.grid},ticks:{callback:v=>'$'+(v/1000)+'k'}},x:{grid:{display:false}}},plugins:{...baseOpts.plugins,tooltip:{...baseOpts.plugins.tooltip,callbacks:{label:c=>usd(c.parsed.y)}}}}});
+
+/* ROAS */
+new Chart(document.getElementById('cRoas'),{type:'line',data:{labels:months,datasets:[{data:[3.14,2.87,4.40,2.62],borderColor:V.l,borderWidth:3,tension:.4,fill:true,backgroundColor:(c)=>gFill(c.chart.ctx,'rgba(176,107,255,.28)','rgba(176,107,255,0)'),pointBackgroundColor:'#fff',pointBorderColor:V.l,pointBorderWidth:2.5,pointRadius:5,pointHoverRadius:7}]},options:{...baseOpts,scales:{y:{grid:{color:V.grid},suggestedMin:0,ticks:{callback:v=>v+'x'}},x:{grid:{display:false}}},plugins:{...baseOpts.plugins,tooltip:{...baseOpts.plugins.tooltip,callbacks:{label:c=>c.parsed.y+'x ROAS'}}}}});
+
+/* ACOS + TACOS */
+new Chart(document.getElementById('cAcos'),{type:'line',data:{labels:months,datasets:[
+{label:'ACOS',data:[31.85,34.83,22.71,38.14],borderColor:V.red,borderWidth:3,tension:.4,pointBackgroundColor:'#fff',pointBorderColor:V.red,pointBorderWidth:2.5,pointRadius:5,pointHoverRadius:7,fill:false},
+{label:'TACOS',data:[3.06,5.95,2.61,3.52],borderColor:V.gold,borderWidth:3,tension:.4,pointBackgroundColor:'#fff',pointBorderColor:V.gold,pointBorderWidth:2.5,pointRadius:5,pointHoverRadius:7,fill:false}
+]},options:{...baseOpts,plugins:{...baseOpts.plugins,legend:{display:true,position:'top',labels:{usePointStyle:true,boxWidth:7,padding:16}},tooltip:{...baseOpts.plugins.tooltip,callbacks:{label:c=>c.dataset.label+': '+pct(c.parsed.y)}}},scales:{y:{grid:{color:V.grid},ticks:{callback:v=>v+'%'}},x:{grid:{display:false}}}}});
+
+/* Units */
+new Chart(document.getElementById('cUnits'),{type:'bar',data:{labels:months,datasets:[
+{label:'PPC Units',data:[185,452,881,391],backgroundColor:V.m,borderRadius:7,stack:'u'},
+{label:'Organic Units',data:[1908,2317,7461,4108],backgroundColor:'rgba(176,107,255,.45)',borderRadius:7,stack:'u'}
+]},options:{...baseOpts,plugins:{...baseOpts.plugins,legend:{display:true,position:'top',labels:{usePointStyle:true,boxWidth:7,padding:16}}},scales:{y:{grid:{color:V.grid},ticks:{callback:v=>(v/1000)+'k'}},x:{grid:{display:false}}}}});
+
+/* Revenue vs Ad Revenue */
+new Chart(document.getElementById('cRev'),{type:'bar',data:{labels:months,datasets:[
+{label:'Total Revenue',data:[33261.27,43777.00,130494.85,71030.87],backgroundColor:(c)=>gFill(c.chart.ctx,'rgba(91,52,214,.95)','rgba(124,77,255,.7)'),borderRadius:8},
+{label:'Ad Revenue',data:[3193.17,7475.69,15000.39,6551.14],backgroundColor:'rgba(231,185,77,.85)',borderRadius:8}
+]},options:{...baseOpts,plugins:{...baseOpts.plugins,legend:{display:true,position:'top',labels:{usePointStyle:true,boxWidth:7,padding:16}},tooltip:{...baseOpts.plugins.tooltip,callbacks:{label:c=>c.dataset.label+': '+usd(c.parsed.y)}}},scales:{y:{grid:{color:V.grid},ticks:{callback:v=>'$'+(v/1000)+'k'}},x:{grid:{display:false}}}}});
+
+/* Target Dashboard (radar) */
+new Chart(document.getElementById('cDash'),{type:'radar',data:{labels:['ROAS (4.0+)','CVR (10-15%)','In-Stock (95%+)','TACOS (<10%)','ACOS (<30%)','Sales Growth (10-20%)'],datasets:[{label:'2026 Target',data:[80,75,95,84,72,75],borderColor:V.d,borderWidth:2.5,backgroundColor:'rgba(124,77,255,.18)',pointBackgroundColor:V.m,pointBorderColor:'#fff',pointBorderWidth:2,pointRadius:5}]},options:{...baseOpts,scales:{r:{angleLines:{color:V.grid},grid:{color:V.grid},pointLabels:{font:{size:12,weight:'600'},color:'#16121f'},ticks:{display:false,maxTicksLimit:5},suggestedMin:0,suggestedMax:100}},plugins:{...baseOpts.plugins,tooltip:{...baseOpts.plugins.tooltip,callbacks:{label:c=>'Target band: '+c.label.match(/\(([^)]+)\)/)[1]}}}}});
+</script>
+</body>
+</html>
