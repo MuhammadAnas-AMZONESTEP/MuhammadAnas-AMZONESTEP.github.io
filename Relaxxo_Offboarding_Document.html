@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Relaxxo — Engagement Closing Document | AMZ One Step</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --paper: #efe9e1;          /* warm stone */
+    --paper-warm: #e5dccf;     /* deeper sand */
+    --card: #f6f2ec;
+    --ink: #20221f;
+    --ink-soft: #3d403b;
+    --ink-muted: #767069;
+    --rule: #cabfae;
+    --accent: #2f5d5b;         /* deep slate-teal — calm, clinical-warm */
+    --accent-2: #b5683f;       /* soft clay — used sparingly */
+    --sand: #a98c5f;
+    --highlight: #f1e6d2;
+    --pos: #2f5d5b;
+    --neg: #a85a44;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.68;
+    font-weight: 400;
+    font-size: 16px;
+    background-image:
+      radial-gradient(circle at 12% 20%, rgba(169, 140, 95, 0.05) 0%, transparent 38%),
+      radial-gradient(circle at 88% 80%, rgba(47, 93, 91, 0.05) 0%, transparent 40%);
+    background-attachment: fixed;
+  }
+
+  .page {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 80px 64px;
+    position: relative;
+  }
+  .page + .page { border-top: 1px solid var(--rule); }
+
+  /* ---------- Cover ---------- */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 56px 64px 48px;
+  }
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .cover-top .brand-mark {
+    font-family: 'Newsreader', serif;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: var(--ink);
+  }
+  .cover-top .brand-mark span {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+  .cover-meta { text-align: right; line-height: 1.85; }
+
+  .cover-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 56px;
+  }
+  .eyebrow {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.30em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 32px;
+  }
+  .eyebrow::before {
+    content: "";
+    display: inline-block;
+    width: 26px;
+    height: 1px;
+    background: var(--accent-2);
+    vertical-align: middle;
+    margin-right: 14px;
+    margin-bottom: 3px;
+  }
+  .cover h1 {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(46px, 6.2vw, 80px);
+    font-weight: 400;
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+    color: var(--ink);
+  }
+  .cover h1 em { font-style: italic; font-weight: 400; color: var(--accent); }
+
+  .cover-lede {
+    font-family: 'Newsreader', serif;
+    font-size: 19px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 600px;
+    margin-top: 8px;
+  }
+  .cover-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 56px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+  }
+  .cover-bottom .label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 6px;
+  }
+  .cover-bottom .name { font-family: 'Newsreader', serif; font-size: 17px; font-weight: 500; }
+  .cover-bottom .right { text-align: right; }
+
+  /* ---------- Section headers ---------- */
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 14px;
+  }
+  .section-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 500;
+  }
+  h2.section-title {
+    font-family: 'Newsreader', serif;
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+    color: var(--ink);
+  }
+  h2.section-title em { font-style: italic; font-weight: 400; color: var(--accent); }
+
+  .section-intro {
+    font-family: 'Newsreader', serif;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.62;
+    color: var(--ink-soft);
+    max-width: 680px;
+    margin-bottom: 48px;
+    border-left: 2px solid var(--accent);
+    padding-left: 20px;
+  }
+
+  h3.sub-title {
+    font-family: 'Newsreader', serif;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 48px 0 18px;
+    color: var(--ink);
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+  }
+  h3.sub-title .roman {
+    font-size: 13px;
+    color: var(--accent-2);
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+
+  /* ---------- Body text ---------- */
+  p { margin-bottom: 16px; color: var(--ink-soft); }
+  p strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------- Stat grid ---------- */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin: 36px 0 12px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .stat { padding: 24px 20px 24px 0; border-right: 1px solid var(--rule); }
+  .stat:last-child { border-right: none; padding-right: 0; }
+  .stat:first-child { padding-left: 0; }
+  .stat:not(:first-child):not(:last-child) { padding-left: 20px; }
+  .stat:nth-child(2) { padding-left: 20px; }
+  .stat-value {
+    font-family: 'Newsreader', serif;
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+  .stat-value em { font-style: italic; color: var(--accent); }
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    line-height: 1.45;
+  }
+
+  /* ---------- Table ---------- */
+  .table-wrap { margin: 32px 0; border-top: 1.5px solid var(--ink); }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  thead th {
+    text-align: left;
+    padding: 12px 14px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 600;
+    border-bottom: 1px solid var(--rule);
+    background: rgba(255,255,255,0.28);
+  }
+  thead th:first-child { padding-left: 0; }
+  thead th:last-child { padding-right: 0; text-align: right; }
+  tbody td {
+    padding: 14px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+  }
+  tbody td:first-child {
+    padding-left: 0;
+    font-family: 'Newsreader', serif;
+    font-weight: 500;
+    color: var(--ink);
+    font-size: 15px;
+  }
+  tbody td:last-child { padding-right: 0; text-align: right; }
+  tbody tr.highlight td { background: var(--highlight); }
+  tbody tr:hover td { background: rgba(255,255,255,0.4); }
+  .change-pos { color: var(--pos); font-weight: 600; }
+  .change-neg { color: var(--neg); font-weight: 600; }
+
+  /* ---------- Pull quote / callout ---------- */
+  .pull-quote {
+    font-family: 'Newsreader', serif;
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.48;
+    color: var(--ink);
+    padding: 32px 0 32px 32px;
+    margin: 40px 0;
+    border-left: 3px solid var(--accent);
+    position: relative;
+  }
+  .pull-quote::before {
+    content: "❋";
+    position: absolute;
+    left: -11px;
+    top: -12px;
+    background: var(--paper);
+    color: var(--accent-2);
+    font-size: 16px;
+    padding: 0 8px;
+  }
+  .callout {
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent-2);
+    padding: 24px 28px;
+    margin: 32px 0;
+    border-radius: 2px;
+  }
+  .callout-label {
+    font-size: 10px;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: var(--accent-2);
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .callout p {
+    margin-bottom: 0;
+    font-family: 'Newsreader', serif;
+    font-size: 16px;
+    color: var(--ink);
+    line-height: 1.58;
+  }
+
+  /* ---------- Bullet list ---------- */
+  ul.refined { list-style: none; margin: 16px 0 24px; padding: 0; }
+  ul.refined li {
+    padding: 14px 0 14px 28px;
+    border-bottom: 1px dotted var(--rule);
+    color: var(--ink-soft);
+    position: relative;
+    font-size: 15px;
+  }
+  ul.refined li:last-child { border-bottom: none; }
+  ul.refined li::before {
+    content: "❋";
+    position: absolute;
+    left: 0;
+    top: 14px;
+    color: var(--accent-2);
+    font-size: 12px;
+  }
+  ul.refined li strong {
+    color: var(--ink);
+    font-weight: 600;
+    font-family: 'Newsreader', serif;
+    font-size: 16px;
+  }
+
+  /* ---------- Two-column ---------- */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin: 32px 0;
+  }
+  .col-block h4 {
+    font-family: 'Newsreader', serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--ink);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .col-block p { font-size: 14.5px; line-height: 1.62; }
+
+  /* ---------- Chart ---------- */
+  .chart-wrap {
+    background: rgba(255,255,255,0.4);
+    border: 1px solid var(--rule);
+    padding: 28px 24px 16px;
+    margin: 36px 0 12px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .chart-title {
+    font-family: 'Newsreader', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .chart-sub {
+    font-size: 11px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-bottom: 18px;
+  }
+  .chart-canvas-wrap { height: 280px; position: relative; }
+
+  /* ---------- Page footer ---------- */
+  .page-footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* ---------- Closing ---------- */
+  .closing { text-align: center; padding: 80px 0 40px; }
+  .closing .ornament {
+    font-size: 22px;
+    color: var(--accent-2);
+    margin-bottom: 32px;
+    letter-spacing: 0.5em;
+  }
+  .closing .signoff {
+    font-family: 'Newsreader', serif;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.52;
+    max-width: 600px;
+    margin: 0 auto 28px;
+  }
+  .closing .signature { font-family: 'Newsreader', serif; font-size: 15px; color: var(--ink); margin-top: 32px; }
+  .closing .signature strong { font-weight: 600; }
+  .closing .signature .role {
+    color: var(--ink-muted);
+    font-size: 12px;
+    letter-spacing: 0.11em;
+    text-transform: uppercase;
+    margin-top: 6px;
+    display: block;
+  }
+  .disclaimer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    font-size: 11px;
+    color: var(--ink-muted);
+    line-height: 1.7;
+    text-align: center;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ---------- Animation ---------- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .cover h1, .cover-lede, .eyebrow, .cover-bottom { animation: fadeUp 0.9s ease-out backwards; }
+  .eyebrow { animation-delay: 0.1s; }
+  .cover h1 { animation-delay: 0.25s; }
+  .cover-lede { animation-delay: 0.45s; }
+  .cover-bottom { animation-delay: 0.7s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 720px) {
+    .page { padding: 56px 28px; }
+    .cover { padding: 32px 28px; }
+    .cover h1 { font-size: 42px; }
+    h2.section-title { font-size: 32px; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .stat { border-right: none; padding: 18px 0 !important; border-bottom: 1px solid var(--rule); }
+    .stat:nth-child(2) { border-right: none; }
+    .stat-value { font-size: 30px; }
+    .two-col { grid-template-columns: 1fr; gap: 24px; }
+    table { font-size: 12.5px; }
+    thead th, tbody td { padding: 10px 8px; }
+    .cover-bottom { flex-direction: column; gap: 24px; align-items: flex-start; }
+    .cover-bottom .right { text-align: left; }
+  }
+
+  /* ---------- Print ---------- */
+  @media print {
+    body { background: white; }
+    .page { padding: 40px; max-width: 100%; }
+    .cover { min-height: auto; page-break-after: always; }
+    .page + .page { page-break-before: always; border-top: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============== COVER ============== -->
+<section class="page cover">
+  <div class="cover-top">
+    <div class="brand-mark">AMZ <span>One</span> Step</div>
+    <div class="cover-meta">
+      DOC / RX-OB-001<br>
+      CONFIDENTIAL<br>
+      JUN 2026
+    </div>
+  </div>
+
+  <div class="cover-center">
+    <div class="eyebrow">Engagement Closing Document · Relaxxo × AMZ One Step</div>
+    <h1>Nine months,<br>and a considered <em>handover</em>.</h1>
+    <p class="cover-lede">
+      A clear record of what we built together over the engagement — the trajectory,
+      the numbers, the pricing decisions that shaped them — and a candid view of where
+      the account stands as it is handed back.
+    </p>
+  </div>
+
+  <div class="cover-bottom">
+    <div>
+      <div class="label">Prepared for</div>
+      <div class="name">Relaxxo</div>
+    </div>
+    <div>
+      <div class="label">Engagement period</div>
+      <div class="name">Sep 2025 — Jun 2026</div>
+    </div>
+    <div class="right">
+      <div class="label">Prepared by</div>
+      <div class="name">Muhammad Anas</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== PAGE 1 — A NOTE AS WE CLOSE ============== -->
+<section class="page">
+  <div class="section-header">
+    <span class="section-num">01 / Four</span>
+    <span class="section-num">A note as we close</span>
+  </div>
+  <h2 class="section-title">Closing the <em>chapter</em>.</h2>
+  <p class="section-intro">
+    As our engagement on Relaxxo comes to a close, this document gathers — in one
+    place — a clear record of the nine months of work, the results it produced, the
+    pricing decisions that shaped the back half of the year, and the state of the
+    account being handed back.
+  </p>
+
+  <p>
+    When we took over PPC management in mid-September 2025, the scalp massager was on a
+    declining trajectory. Advertising efficiency had broken down — <strong>ACOS was
+    running above 100%</strong> and <strong>TACOS sat near 80%</strong>, meaning the
+    account was spending roughly as much to advertise as it was earning. The product
+    was priced at $5.29, daily orders averaged around 20, and the first weeks under our
+    management were deliberately steady while we audited and rebuilt the foundation.
+  </p>
+
+  <p>
+    Nine months later, the account is in a fundamentally different position. It reached
+    a monthly peak of <strong>$12,822</strong> in December 2025 — nearly
+    <strong>five times</strong> the $2,593 it did in December 2024 — absorbed a price
+    increase from $5.29 to $7.49 across the engagement, and rebuilt advertising
+    efficiency from an unsustainable starting point into a controlled, profitable
+    operating range. The work moved the listing from a loss-making ad account into a
+    genuine, scalable asset.
+  </p>
+
+  <h3 class="sub-title"><span class="roman">i.</span> Headline figures</h3>
+
+  <div class="stat-grid">
+    <div class="stat">
+      <div class="stat-value">+<em>395</em>%</div>
+      <div class="stat-label">December Sales YoY<br>Dec 2024 → Dec 2025</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">$<em>12.8</em>K</div>
+      <div class="stat-label">All-Time Monthly Peak<br>December 2025</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">+<em>42</em>%</div>
+      <div class="stat-label">Avg Selling Price<br>$5.29 → $7.50</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">+<em>283</em>%</div>
+      <div class="stat-label">Q1 Sales YoY<br>Q1 2025 → Q1 2026</div>
+    </div>
+  </div>
+
+  <div class="pull-quote">
+    The account began the engagement losing money on every advertised sale. It ends it
+    as a profitable listing that has carried a 42% price increase and posted its three
+    strongest months on record.
+  </div>
+
+  <h3 class="sub-title"><span class="roman">ii.</span> Before vs. under management</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>At Takeover (Sep ’25)</th>
+          <th>Under Management</th>
+          <th>Change</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>ACOS</td>
+          <td>Above 100%</td>
+          <td>Controlled, profitable range</td>
+          <td class="change-pos">Reversed</td>
+        </tr>
+        <tr>
+          <td>TACOS</td>
+          <td>~80%</td>
+          <td>41% (Dec ’25 low)</td>
+          <td class="change-pos">−39 pts</td>
+        </tr>
+        <tr>
+          <td>Daily Orders</td>
+          <td>~20</td>
+          <td>50–60 (Q4 peak)</td>
+          <td class="change-pos">+150–200%</td>
+        </tr>
+        <tr class="highlight">
+          <td>Best Month</td>
+          <td>$5,436 (Sep ’25)</td>
+          <td>$12,822 (Dec ’25)</td>
+          <td class="change-pos">+136%</td>
+        </tr>
+        <tr>
+          <td>Average Selling Price</td>
+          <td>$5.29</td>
+          <td>$7.50</td>
+          <td class="change-pos">+42%</td>
+        </tr>
+        <tr>
+          <td>Trajectory</td>
+          <td>Declining</td>
+          <td>Growth + efficiency</td>
+          <td class="change-pos">Reversed</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="page-footer">
+    <span>Relaxxo · Engagement Closing</span>
+    <span>01 / Four</span>
+  </div>
+</section>
+
+<!-- ============== PAGE 2 — WHAT WE BUILT ============== -->
+<section class="page">
+  <div class="section-header">
+    <span class="section-num">02 / Four</span>
+    <span class="section-num">What we built together</span>
+  </div>
+  <h2 class="section-title">The <em>work</em>, in summary.</h2>
+  <p class="section-intro">
+    Beyond the headline numbers, the engagement followed a clear arc: stabilize, then
+    scale, then raise price and protect margin. Each phase was tied to a goal the
+    Relaxxo team set, and each goal was met. This is how the account moved.
+  </p>
+
+  <h3 class="sub-title"><span class="roman">i.</span> Sales trajectory across the engagement</h3>
+
+  <div class="chart-wrap">
+    <div class="chart-title">Monthly Total Sales — Sep 2025 to Jun 2026</div>
+    <div class="chart-sub">Q4 scale-up · Q1 efficiency hold · post-March price-driven softening</div>
+    <div class="chart-canvas-wrap">
+      <canvas id="salesChart"></canvas>
+    </div>
+  </div>
+
+  <h3 class="sub-title"><span class="roman">ii.</span> Goals set, goals met</h3>
+
+  <p>
+    The engagement was driven by a sequence of targets the Relaxxo team set, each one
+    raising the bar as the previous was cleared.
+  </p>
+
+  <ul class="refined">
+    <li>
+      <strong>Reach 40+ orders per day.</strong>
+      The first month was deliberately steady at ~20 orders/day while we rebuilt the
+      account. From mid-October, momentum shifted decisively — daily orders climbed to
+      <strong>50–60</strong>, comfortably clearing the target and driving the Q4 scale-up.
+    </li>
+    <li>
+      <strong>Bring TACOS down to 50%, then under 30%.</strong>
+      From a starting point near 80%, disciplined spend and compounding organic rank
+      brought TACOS to a low of <strong>41% in December</strong> at peak volume — the
+      strongest efficiency-at-scale month of the engagement.
+    </li>
+    <li>
+      <strong>Raise price without losing volume.</strong>
+      On our recommendation, price was lifted in small increments from $5.59 to $6.99.
+      The gradual approach worked: the listing absorbed each step while sales continued
+      to climb, validating real pricing power in the listing.
+    </li>
+  </ul>
+
+  <h3 class="sub-title"><span class="roman">iii.</span> Two deliberate phases</h3>
+
+  <div class="two-col">
+    <div class="col-block">
+      <h4>Q4 2025 — Scale into peak</h4>
+      <p>
+        We leaned into the holiday window, widening targeting and increasing bids on
+        high-converting placements. The result was the
+        <strong>$12,822 December peak</strong> — the largest month in the account's
+        history and nearly 5× the prior December — at a TACOS of just 41%.
+      </p>
+    </div>
+    <div class="col-block">
+      <h4>Q1 2026 — Efficiency hold</h4>
+      <p>
+        Q1 delivered roughly <strong>$30.7K in sales — 283% above Q1 2025.</strong>
+        TACOS rose to ~60% early in the quarter as planned, then we pulled spend back in
+        February and March to bring it to <strong>47%</strong>, holding a positive
+        trajectory into spring.
+      </p>
+    </div>
+  </div>
+
+  <h3 class="sub-title"><span class="roman">iv.</span> Key optimizations delivered</h3>
+
+  <ul class="refined">
+    <li>
+      <strong>Efficiency reset at takeover.</strong>
+      Inherited an account running above 100% ACOS; rebuilt the campaign structure and
+      eliminated wasted spend to establish a sustainable baseline.
+    </li>
+    <li>
+      <strong>Order-velocity scale-up.</strong>
+      Took daily orders from ~20 to 50–60, the volume foundation that made the Q4
+      record possible.
+    </li>
+    <li>
+      <strong>Incremental price strategy.</strong>
+      Guided pricing from $5.29 to $6.99 in measured steps — a +32% increase the
+      listing absorbed without losing momentum, lifting margin on every unit.
+    </li>
+    <li>
+      <strong>Year-over-year step change.</strong>
+      December +395% and Q1 +283% versus the prior year — the clearest evidence that
+      the work changed the account's level, not just its month-to-month noise.
+    </li>
+  </ul>
+
+  <div class="page-footer">
+    <span>Relaxxo · Engagement Closing</span>
+    <span>02 / Four</span>
+  </div>
+</section>
+
+<!-- ============== PAGE 3 — A CANDID NOTE ============== -->
+<section class="page">
+  <div class="section-header">
+    <span class="section-num">03 / Four</span>
+    <span class="section-num">A candid note on Q2</span>
+  </div>
+  <h2 class="section-title">The price move, and what <em>followed</em>.</h2>
+  <p class="section-intro">
+    A closing document is only useful if it is honest about the hard parts as well as
+    the wins. The second quarter saw the account soften, and the cause is clear enough
+    that it is worth stating plainly — so the team can plan around it.
+  </p>
+
+  <h3 class="sub-title"><span class="roman">i.</span> What happened in March</h3>
+
+  <p>
+    In mid-March, the team requested a price increase to $7.99 — which would have
+    placed Relaxxo near the highest price point in the category. We advised against the
+    full move and instead agreed on a smaller step to <strong>$7.49</strong>. Even at
+    the moderated level, this proved to be the turning point for the quarter.
+  </p>
+
+  <p>
+    The listing began to lose search rankings, and sales volume declined with them.
+    Monthly sales moved from <strong>$11,820 in February</strong> to
+    <strong>$6,242 in March</strong> and <strong>$4,567 in April</strong> as the higher
+    price compressed conversion and organic rank slipped on key terms.
+  </p>
+
+  <h3 class="sub-title"><span class="roman">ii.</span> The trade-off we made to defend velocity</h3>
+
+  <p>
+    At the team's request, we intensified advertising to defend sales velocity at the
+    new price point. That effort worked — sales recovered to <strong>$6,070 in May</strong>
+    and <strong>$6,828 in June</strong> — but it came at the cost of efficiency.
+    <strong>TACOS rose to roughly 67%</strong>, and the majority of sales are now being
+    driven by paid advertising rather than organic search. This was a deliberate,
+    agreed trade-off: volume held, but on a more expensive footing than the account ran
+    at its Q4–Q1 best.
+  </p>
+
+  <div class="callout">
+    <div class="callout-label">The honest read</div>
+    <p>
+      The $7.49 price is defensible on margin per unit, but at current organic rank it
+      requires heavier ad support to hold volume. The lever that most directly improves
+      Q2's efficiency is price: a modest step back toward the $6.99 level — where the
+      listing demonstrably scaled — would likely relieve the pressure on paid spend and
+      let organic rank recover.
+    </p>
+  </div>
+
+  <h3 class="sub-title"><span class="roman">iii.</span> What we'd watch from here</h3>
+
+  <ul class="refined">
+    <li>
+      <strong>Organic rank on the top 10 keywords.</strong>
+      The leading indicator of where total sales settle. Track weekly — recovery here
+      precedes any sustainable reduction in ad spend.
+    </li>
+    <li>
+      <strong>Price elasticity around $6.99–$7.49.</strong>
+      The data already shows the listing scaled cleanly through $6.99. Testing back
+      toward that band would clarify how much of the Q2 softness is price-driven.
+    </li>
+    <li>
+      <strong>TACOS trend, not just the level.</strong>
+      A TACOS of 67% is acceptable briefly to defend rank; left unmanaged it erodes the
+      margin the price increase was meant to capture.
+    </li>
+    <li>
+      <strong>Session volume.</strong>
+      If sessions recover while conversion holds, rank is returning; if sessions stay
+      depressed, the price ceiling is the binding constraint.
+    </li>
+  </ul>
+
+  <div class="page-footer">
+    <span>Relaxxo · Engagement Closing</span>
+    <span>03 / Four</span>
+  </div>
+</section>
+
+<!-- ============== PAGE 4 — OPPORTUNITY & HANDOVER ============== -->
+<section class="page">
+  <div class="section-header">
+    <span class="section-num">04 / Four</span>
+    <span class="section-num">Opportunity & handover</span>
+  </div>
+  <h2 class="section-title">What's <em>next</em>, and a clean handover.</h2>
+  <p class="section-intro">
+    The account is being returned in a far stronger position than it was found in, with
+    a clear growth lever already sitting in the catalog. Below is the opportunity ahead,
+    followed by the state of the account at handover.
+  </p>
+
+  <h3 class="sub-title"><span class="roman">i.</span> Two new products, not yet launched</h3>
+
+  <p>
+    Relaxxo has introduced <strong>two new products</strong> into the catalog. PPC
+    campaigns have not yet been launched for either. Both show strong market potential
+    and represent the most direct opportunity to grow overall revenue — and to do so at
+    <strong>better advertising efficiency</strong> than the core listing currently runs
+    at, since fresh launches can be built on the campaign structure, negative-keyword
+    discipline, and bidding playbook already proven on the scalp massager.
+  </p>
+
+  <div class="callout">
+    <div class="callout-label">Why this matters now</div>
+    <p>
+      The core listing is mature and price-constrained in Q2. New products are the
+      cleanest path to incremental revenue without leaning harder on the existing
+      listing's paid spend — and they inherit nine months of category learning from day
+      one rather than starting cold.
+    </p>
+  </div>
+
+  <h3 class="sub-title"><span class="roman">ii.</span> State of the account at handover</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Area</th>
+          <th>Current state</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Campaign structure</td>
+          <td>Rebuilt from takeover · winners isolated · documented</td>
+        </tr>
+        <tr>
+          <td>Pricing</td>
+          <td>$7.49 · up from $5.29 at takeover (+42%)</td>
+        </tr>
+        <tr>
+          <td>Sales trajectory</td>
+          <td>Recovered to ~$6.8K/mo (Jun ’26) after Q2 price softening</td>
+        </tr>
+        <tr>
+          <td>Efficiency</td>
+          <td>TACOS ~67% · elevated to defend velocity at current price</td>
+        </tr>
+        <tr>
+          <td>New products</td>
+          <td>Two in catalog · PPC not yet launched · ready to scale</td>
+        </tr>
+        <tr>
+          <td>Inventory health</td>
+          <td>No stockouts recorded during engagement</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sub-title"><span class="roman">iii.</span> What we'll provide as we wind down</h3>
+
+  <ul class="refined">
+    <li>
+      <strong>Final account walkthrough.</strong>
+      A recorded session covering campaign structure, naming conventions, and the logic
+      behind the current bid strategy.
+    </li>
+    <li>
+      <strong>Campaign &amp; negative-keyword export.</strong>
+      The full structure and negative-keyword libraries, so nine months of learning
+      carries forward to whoever manages the account next.
+    </li>
+    <li>
+      <strong>New-product launch notes.</strong>
+      Our recommended starting structure for the two unlaunched products, drawn from
+      what worked on the core listing.
+    </li>
+    <li>
+      <strong>Two weeks of post-handover availability.</strong>
+      For technical questions or context the team needs through the transition — at no
+      additional cost.
+    </li>
+  </ul>
+
+  <!-- Closing -->
+  <div class="closing">
+    <div class="ornament">❋ ❋ ❋</div>
+    <p class="signoff">
+      It has been a genuine pleasure working on Relaxxo over these nine months. The
+      account ends the engagement profitable, carrying a 42% higher price, and with a
+      clear runway in the two new products. We wish the team every success with what
+      comes next.
+    </p>
+    <div class="signature">
+      <strong>Muhammad Anas</strong>
+      <span class="role">AMZ One Step · PPC Lead, Relaxxo Account</span>
+    </div>
+  </div>
+
+  <p class="disclaimer">
+    Figures referenced in this document are drawn from the Relaxxo Business Report
+    (Sessions &amp; Sales) through June 2026, alongside engagement records of pricing,
+    order volume, and advertising efficiency. ACOS, TACOS, and daily-order figures
+    reflect account-management reporting over the engagement period. Forward-looking
+    observations are directional and depend on category competition, seasonality, and
+    pricing and channel decisions made by the Relaxxo team.
+  </p>
+
+</section>
+
+<script>
+  const ctx = document.getElementById('salesChart');
+  if (ctx) {
+    const data = {
+      labels: ['Sep ’25', 'Oct ’25', 'Nov ’25', 'Dec ’25', 'Jan ’26', 'Feb ’26', 'Mar ’26', 'Apr ’26', 'May ’26', 'Jun ’26'],
+      datasets: [{
+        label: 'Total Monthly Sales',
+        data: [5436, 6459, 11219, 12822, 12592, 11820, 6242, 4567, 6070, 6828],
+        borderColor: '#2f5d5b',
+        backgroundColor: 'rgba(47, 93, 91, 0.08)',
+        borderWidth: 2.5,
+        tension: 0.32,
+        fill: true,
+        pointBackgroundColor: '#2f5d5b',
+        pointBorderColor: '#efe9e1',
+        pointBorderWidth: 2,
+        pointRadius: 5,
+        pointHoverRadius: 7
+      }]
+    };
+    new Chart(ctx, {
+      type: 'line',
+      data: data,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: '#20221f',
+            titleFont: { family: 'Newsreader', size: 12, weight: '500' },
+            bodyFont: { family: 'Outfit', size: 13 },
+            padding: 10,
+            displayColors: false,
+            callbacks: { label: function(ctx) { return '$' + ctx.parsed.y.toLocaleString(); } }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: { color: 'rgba(0,0,0,0.05)', drawBorder: false },
+            ticks: {
+              font: { family: 'Outfit', size: 11 },
+              color: '#767069',
+              callback: function(v) { return '$' + (v/1000) + 'K'; }
+            }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { font: { family: 'Outfit', size: 11 }, color: '#767069' }
+          }
+        }
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
